@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #content {
+            margin-top: 20px;
+            font-size: 24px;
+            border: solid 1px red;
+            padding: 20px;
+        }
+
+        .focused {
+            border: 2px solid blue;
+        }
+
+        #inputField {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="changeContent()">Click Me</button>
+    <button id="btnListenToMe">Listen to me!</button>
+    <div id="content">TBD</div>
+    <input type="text" id="inputField" placeholder="Type something..." onfocus="onFocus()" onblur="onBlur()">
+
+    <script>
+
+        document.getElementById('btnListenToMe').addEventListener('click', function () {
+           changeContent();
+        });
+
+        function onFocus() {
+            document.getElementById('content').innerHTML = 'On Focus';
+            document.getElementById('inputField').classList.add('focused');
+        }
+        function onBlur() {
+            document.getElementById('content').innerHTML = 'You left the input field';
+            document.getElementById('inputField').classList.remove('focused');
+        }
+        function showAlert() {
+            alert('Button was clicked!');
+        }
+
+        function changeContent() {
+            document.getElementById('content').innerHTML = 'Button was clicked!';
+        }
+
+    </script>
+
+</body>
+
+</html>
+
+<!-- <script>
+       
+    </script>    -->
