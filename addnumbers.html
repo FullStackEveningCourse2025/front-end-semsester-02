@@ -47,8 +47,10 @@
 
 
     <div id="content">TBD</div>
-    <input type="text" id="tbFirstNumber" placeholder="Enter First Number" onfocus="onFocusFirstNumber()" onBlurFirstNumber="onBlur()">
-    <input type="text" id="tbSecondNumber" placeholder="Enter Second Number" onfocus="onFocusSecondNumber()" onblur="onBlur()">
+    <input type="text" id="tbFirstNumber" placeholder="Enter First Number" onfocus="onFocus(this)"
+        onblur="onBlur(this)" value="0">
+    <input type="text" id="tbSecondNumber" placeholder="Enter Second Number" onfocus="onFocus(this)"
+       value="0" onblur="onBlur(this)">
     <button onclick="AddNumbers()">Calculate</button>
     <script>
 
@@ -65,16 +67,26 @@
             document.getElementById('content').innerHTML = calculatedValue;
         }
 
-        function onFocusFirstNumber() {
-            document.getElementById('tbFirstNumber').value = "";
-           
+        function onFocus(elementThatHasFocus) {
+            elementThatHasFocus.value = "";
+
         }
-        function onFocusSecondNumber() {
-            document.getElementById('tbSecondNumber').value = "";
-           
-        }
-        function onBlurFirstNumber() {
-           
+    
+        function onBlur(elementThatLostFocus) {
+
+            // get the value of the first number input field
+           // var firstNumber = document.getElementById('tbFirstNumber');
+         
+            var convertedValue = parseInt(elementThatLostFocus.value);
+            // check if is NAN 
+            if (isNaN(convertedValue)) {
+                // if it is, set the value to 0
+                elementThatLostFocus.value = "0";
+            } 
+            // get the value of the second number input field
+            // if it is, set the value to 0
+            // else set the value to the number entered by the user
+            AddNumbers();
         }
         // Can you create a simple calculator that takes two numbers from the user and adds them together?
         // The calculator should have a button that, when clicked, will display the result in the content div.
