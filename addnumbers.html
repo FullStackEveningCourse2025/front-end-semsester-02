@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #content {
+            margin-top: 20px;
+            font-size: 24px;
+            border: solid 1px red;
+            padding: 20px;
+        }
+
+        .focused {
+            border: 2px solid blue;
+        }
+
+        #inputField {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="content">TBD</div>
+    <input type="text" id="tbFirstNumber" placeholder="Enter First Number" onfocus="onFocusFirstNumber()" onBlurFirstNumber="onBlur()">
+    <input type="text" id="tbSecondNumber" placeholder="Enter Second Number" onfocus="onFocusSecondNumber()" onblur="onBlur()">
+    <button onclick="AddNumbers()">Calculate</button>
+    <script>
+
+        function AddNumbers() {
+
+            var firstNumber = document.getElementById('tbFirstNumber');
+            var secondNumber = document.getElementById('tbSecondNumber');
+            var calculatedValue = parseInt(firstNumber.value) + parseInt(secondNumber.value);
+            if (isNaN(calculatedValue)) {
+                calculatedValue = "Please enter valid numbers";
+                document.getElementById('tbFirstNumber').value = "0";
+                document.getElementById('tbSecondNumber').value = "0";
+            }
+            document.getElementById('content').innerHTML = calculatedValue;
+        }
+
+        function onFocusFirstNumber() {
+            document.getElementById('tbFirstNumber').value = "";
+           
+        }
+        function onFocusSecondNumber() {
+            document.getElementById('tbSecondNumber').value = "";
+           
+        }
+        function onBlurFirstNumber() {
+           
+        }
+        // Can you create a simple calculator that takes two numbers from the user and adds them together?
+        // The calculator should have a button that, when clicked, will display the result in the content div.
+        // The calculator should also have an input field for the user to enter the first number
+        // and another input field for the second number.
+        // The method should be called AddNumbers 
+
+    </script>
+
+</body>
+
+</html>
