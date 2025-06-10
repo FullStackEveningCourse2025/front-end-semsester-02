@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox Playground</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background: #222;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      background: #444;
+    }
+
+    nav button {
+      flex: 1;
+      padding: 1rem;
+      background: #444;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    nav button.active {
+      background: #222;
+    }
+
+    section {
+      display: none;
+      padding: 1rem;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .card {
+      flex: 1 1 200px;
+      background: #f9f9f9;
+      padding: 1rem;
+      border: 1px solid #ccc;
+    }
+
+    .layout {
+      display: flex;
+      height: 300px;
+    }
+
+    .sidebar {
+      width: 200px;
+      background: #444;
+      color: white;
+      padding: 1rem;
+    }
+
+    .main {
+      flex: 1;
+      padding: 1rem;
+      background: #eee;
+    }
+
+    .overlay {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .modal {
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #333;
+      color: white;
+      padding: 1rem;
+    }
+
+    .menu {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .logo {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>CSS Flexbox Playground</h1>
+</header>
+
+<nav>
+  <button class="tab active" data-tab="nav">Navbar</button>
+  <button class="tab" data-tab="cards">Cards</button>
+  <button class="tab" data-tab="split">Split Layout</button>
+  <button class="tab" data-tab="modal">Centered Modal</button>
+</nav>
+
+<section id="nav" class="active">
+  <h2>Responsive Navigation Bar</h2>
+  <div class="nav-bar">
+    <div class="logo">MySite</div>
+    <div class="menu">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</section>
+
+<section id="cards">
+  <h2>Card Layout</h2>
+  <div class="card-container">
+    <div class="card">Card 1</div>
+    <div class="card">Card 2</div>
+    <div class="card">Card 3</div>
+    <div class="card">Card 4</div>
+  </div>
+</section>
+
+<section id="split">
+  <h2>Split Panel Layout</h2>
+  <div class="layout">
+    <div class="sidebar">Sidebar<br>Menu<br>Links</div>
+    <div class="main">
+      <p>This is the main content area. It expands to fill available space.</p>
+    </div>
+  </div>
+</section>
+
+<section id="modal">
+  <h2>Centered Modal</h2>
+  <div class="overlay">
+    <div class="modal">
+      <h3>Modal Title</h3>
+      <p>This modal is centered with Flexbox.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const sections = document.querySelectorAll('section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      sections.forEach(sec => sec.classList.remove('active'));
+
+      tab.classList.add('active');
+      const target = document.getElementById(tab.dataset.tab);
+      target.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>

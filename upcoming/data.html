@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Attributes Example</title>
+  <style>
+    .product {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin: 5px;
+      cursor: pointer;
+      width: 200px;
+    }
+    #output {
+      margin-top: 20px;
+      font-weight: bold;
+    }swq
+  </style>swq
+</head>
+<body>
+
+  <h2>Click on a product:</h2>
+
+  <div class="product" data-name="Laptop" data-price="999.99">Laptop</div>
+  <div class="product" data-name="Phone" data-price="499.99">Phone</div>
+  <div class="product" data-name="Tablet" data-price="299.99sz">Tablet</div>
+
+  <div id="output">Selected product info will appear here.</div>
+
+  <script>
+    // Select all product elements
+    const products = document.querySelectorAll('.product');
+
+    products.forEach(product => {
+      product.addEventListener('click', function () {
+        const name = this.dataset.name;
+        const price = this.dataset.price;
+
+        document.getElementById('output').textContent =
+          `You selected: ${name} - $${price}`;
+      });
+    });
+  </script>
+
+</body>
+</html>

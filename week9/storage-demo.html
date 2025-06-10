@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Welcome, <span id="displayName">Guest</span>!</h2>
+
+    <button onclick="saveName()">Save Name</button>
+    <button onclick="loadName()">Load Name</button>
+    <button onclick="clearName()">Clear Name</button>
+
+    <input type="text" id="nameInput" placeholder="e.g. Alice" /><br>
+
+    <script>
+        function saveName() {
+            const name = document.getElementById("nameInput").value;
+            if (name !== "") {
+                localStorage.setItem("userName", name);
+            }
+        }
+        function loadName() {
+          
+            const name = localStorage.getItem("userName");
+            document.getElementById("displayName").textContent = name || "Guest";
+
+        }
+        function clearName() {
+            localStorage.removeItem("userName")
+        }
+    </script>
+</body>
+
+</html>

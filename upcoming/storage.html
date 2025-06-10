@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Local Storage Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input, button {
+      margin: 5px 0;
+      padding: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Welcome, <span id="displayName">Guest</span>!</h2>
+
+  <label for="nameInput">Enter your name:</label><br>
+  <input type="text" id="nameInput" placeholder="e.g. Alice" /><br>
+
+  <button onclick="saveName()">Save Name</button>
+  <button onclick="loadName()">Load Name</button>
+  <button onclick="clearName()">Clear Name</button>
+
+  <script>
+    // Save name to local storage
+    function saveName() {
+      const name = document.getElementById("nameInput").value;
+      if (name.trim() !== "") {
+        localStorage.setItem("userName", name);
+        alert("Name saved!");
+        displayStoredName();
+      } else {
+        alert("Please enter a name.");
+      }
+    }
+
+    // Load name from local storage and display it
+    function loadName() {
+      displayStoredName();
+    }
+
+    // Clear the stored name
+    function clearName() {
+      localStorage.removeItem("userName");
+      displayStoredName();
+    }
+
+    // Display the name or 'Guest' if not set
+    function displayStoredName() {
+      const name = localStorage.getItem("userName");
+      document.getElementById("displayName").textContent = name || "Guest";
+    }
+
+    // Automatically load name on page load
+    window.onload = displayStoredName;
+  </script>
+
+</body>
+</html>

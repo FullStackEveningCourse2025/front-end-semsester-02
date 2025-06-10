@@ -1,4 +1,4 @@
-const API_KEY = "your-key-here"
+const API_KEY = "013c96fda1ac6937698c8402e42b0c31f2cc081e ";
 
 
 
@@ -56,7 +56,7 @@ async function loadBikeStations() {
 
 
 async function loadBikeStation() {
-    console.log('I am loading bike station')
+    // console.log('I am loading bike station')
 
     const CONTRACT = "Dublin"
 
